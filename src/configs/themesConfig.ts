@@ -43,9 +43,9 @@ export const themesConfig: FuseThemesType = {
         contrastText: '#FFFFFF',
       },
       secondary: {
-        light: '#FFEB66', // tom mais claro do amarelo principal
-        main: '#FFD307', // amarelo principal
-        dark: '#C9A600', // tom mais escuro e mais fechado do amarelo
+        light: '#1aff6e', // tom mais claro do verde principal
+        main: '#00FF00', // verde principal
+        dark: '#006400', // tom mais escuro e mais fechado do verde
         contrastText: '#000000',
       },
       background: {
@@ -151,9 +151,9 @@ export const themesConfig: FuseThemesType = {
         contrastText: '#FFFFFF',
       },
       secondary: {
-        light: '#FFEB66', // tom mais claro do amarelo principal
-        main: '#FFD307', // amarelo principal
-        dark: '#C9A600', // tom mais escuro e mais fechado do amarelo
+          light: '#1aff6e', // tom mais claro do verde principal
+        main: '#00FF00', // verde principal
+        dark: '#006400', // tom mais escuro e mais fechado do verde
         contrastText: '#000000',
       },
       background: {
