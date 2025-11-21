@@ -1,9 +1,7 @@
 import { combineSlices } from '@reduxjs/toolkit';
 import apiService from './apiService';
 import { navigationSlice } from '@/components/theme-layouts/components/navigation/store/navigationSlice';
-import { boardSlice } from '@/app/(control-panel)/app-user/scrumboard/board/boardSlice';
 import paginationSlice from './slices/paginationSlice';
-import chatsSlice from '@/app/(control-panel)/app-user/chats/chatsSlice';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -16,9 +14,7 @@ export const rootReducer = combineSlices(
    * Static slices
    */
   navigationSlice,
-  boardSlice,
   { pagination: paginationSlice },
-  { chats: chatsSlice },
 
   /**
    * Lazy loaded slices

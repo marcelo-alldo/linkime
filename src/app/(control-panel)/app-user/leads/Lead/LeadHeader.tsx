@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import _ from 'lodash';
 import PageTitle from '@/components/PageTitle';
-import { StepsType, useGetStepsQuery } from '../../scrumboard/ScrumboardApi';
 import { useToggleArchiveMutation } from '@/store/api/archiveApi';
 
 /**
@@ -165,13 +164,6 @@ function LeadHeader({ setLoading, refetch }: LeadHeaderProps) {
     try {
       const stepToAlldo = steps?.data?.find((step) => step.uid === import.meta.env.VITE_APP_START_CONVERSATION_UID);
 
-      const response = await updateLead({
-        stepUid: stepToAlldo.uid,
-        uid,
-        position: 1,
-        changeStep: true,
-      }).unwrap();
-
       refetch();
       setOpenTransferAlldoModal(false);
 
@@ -311,13 +303,7 @@ function LeadHeader({ setLoading, refetch }: LeadHeaderProps) {
 
       {!state?.isView && (
         <div className="flex flex-1 items-center justify-end space-x-0 sm:space-x-3">
-          <Button
-            variant="text"
-            className="whitespace-nowrap"
-            color="error"
-            onClick={handleOpenDeleteLeadModal}
-            disabled={isLoadingDelete || !uid}
-          >
+          <Button variant="text" className="whitespace-nowrap" color="error" onClick={handleOpenDeleteLeadModal} disabled={isLoadingDelete || !uid}>
             <FuseSvgIcon size={20}>heroicons-outline:trash</FuseSvgIcon>
             <span className="hidden sm:flex mx-2">Excluir</span>
           </Button>
