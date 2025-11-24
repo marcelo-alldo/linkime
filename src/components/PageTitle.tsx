@@ -18,7 +18,7 @@ function PageTitle(props: PageTitleProps) {
       <div className="flex items-center min-w-0 gap-3">
         {backNavigation && (
           <IconButton onClick={() => (backUrl ? navigate(backUrl) : navigate(-1))} size="large">
-            <FuseSvgIcon className="w-8 h-8" color="primary">
+            <FuseSvgIcon className="w-8 h-8" sx={{ color: '#fff' }}>
               heroicons-outline:arrow-long-left
             </FuseSvgIcon>
           </IconButton>
