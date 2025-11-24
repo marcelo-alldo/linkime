@@ -10,7 +10,7 @@ const Dashboard = lazy(() => import('./Dashboard'));
 const DashboardRoute: FuseRouteItemType = {
   path: 'dashboard',
   element: <Dashboard />,
-  auth: authRoles.collaborator,
+  // auth: authRoles.collaborator,
 };
 
 export default DashboardRoute;

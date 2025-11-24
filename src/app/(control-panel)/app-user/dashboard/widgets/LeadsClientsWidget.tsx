@@ -21,13 +21,14 @@ function LeadsClientsWidget({ usersIssuesData }: LeadsClientsWidgetProps) {
   const theme = useTheme();
   const [awaitRender, setAwaitRender] = useState(true);
   const [tabValue, setTabValue] = useState(0);
-  // Substitui o uso do widgets?.githubIssues pelo mock
   const widget = usersIssuesData;
   const { overview, series, ranges, labels } = widget;
   const currentRange = Object.keys(ranges)[tabValue];
-  const currentMonth = new Date().getMonth();
-  const totalLeadsMesAtual = series?.[currentRange]?.[0]?.data?.[currentMonth] || 0;
-  const totalClientesMesAtual = series?.[currentRange]?.[1]?.data?.[currentMonth] || 0;
+  
+  // Pega o índice do evento atual (último evento com dados)
+  const currentEventIndex = series?.[currentRange]?.[0]?.data?.length - 1 || 0;
+  const totalLeadsEventoAtual = series?.[currentRange]?.[0]?.data?.[currentEventIndex] || 0;
+  const totalParticipantesEventoAtual = series?.[currentRange]?.[1]?.data?.[currentEventIndex] || 0;
 
   const chartOptions: ApexOptions = {
     chart: {
@@ -113,7 +114,9 @@ function LeadsClientsWidget({ usersIssuesData }: LeadsClientsWidgetProps) {
   return (
     <Paper className="flex flex-col flex-auto p-6 shadow-sm rounded-xl overflow-hidden">
       <div className="flex flex-col sm:flex-row items-start justify-between">
-        <Typography className="text-xl font-medium tracking-tight leading-6 truncate">Leads x Clientes por mês</Typography>
+        <Typography className="text-xl font-medium tracking-tight leading-6 truncate">
+          Leads x Participantes por evento
+        </Typography>
         <div className="mt-3 sm:mt-0">
           <FuseTabs value={tabValue} onChange={(_ev, value: number) => setTabValue(value)}>
             {Object.entries(ranges).map(([key, label], index) => (
@@ -125,10 +128,15 @@ function LeadsClientsWidget({ usersIssuesData }: LeadsClientsWidgetProps) {
       <div className="grid grid-cols-1 lg:grid-cols-2 grid-flow-row gap-6 w-full mt-8 sm:mt-4">
         <div className="flex flex-col flex-auto">
           <Typography className="font-medium" color="text.secondary">
-            Leads x Clientes
+            Leads x Participantes
           </Typography>
           <div className="flex flex-col flex-auto">
-            <ReactApexChart className="flex-auto w-full" options={chartOptions} series={_.cloneDeep(series[currentRange])} height={320} />
+            <ReactApexChart 
+              className="flex-auto w-full" 
+              options={chartOptions} 
+              series={_.cloneDeep(series[currentRange])} 
+              height={320} 
+            />
           </div>
         </div>
         <div className="flex flex-col">
@@ -140,15 +148,23 @@ function LeadsClientsWidget({ usersIssuesData }: LeadsClientsWidgetProps) {
               className="col-span-4 flex flex-col items-center justify-center py-8 px-1 rounded-xl"
               style={{ backgroundColor: theme.palette.primary.main, color: theme.palette.secondary.main }}
             >
-              <Typography className="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">{totalLeadsMesAtual}</Typography>
-              <Typography className="mt-1 text-sm sm:text-lg font-medium">Leads do mês</Typography>
+              <Typography className="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">
+                {totalLeadsEventoAtual}
+              </Typography>
+              <Typography className="mt-1 text-sm sm:text-lg font-medium">
+                Leads do evento atual
+              </Typography>
             </div>
             <div
               className="col-span-4 flex flex-col items-center justify-center py-8 px-1 rounded-xl"
               style={{ backgroundColor: theme.palette.secondary.main, color: theme.palette.primary.main }}
             >
-              <Typography className="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">{totalClientesMesAtual}</Typography>
-              <Typography className="mt-1 text-sm sm:text-lg font-medium">Clientes do mês</Typography>
+              <Typography className="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">
+                {totalParticipantesEventoAtual}
+              </Typography>
+              <Typography className="mt-1 text-sm sm:text-lg font-medium">
+                Participantes do evento atual
+              </Typography>
             </div>
           </div>
         </div>

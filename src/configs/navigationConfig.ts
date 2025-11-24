@@ -20,7 +20,7 @@ const navigationConfig: FuseNavItemType[] = [
     type: 'item',
     icon: 'material-outline:bar_chart',
     url: 'dashboard',
-    auth: authRoles.collaborator,
+    // auth: authRoles.collaborator,
   },
   {
     id: 'reports',
