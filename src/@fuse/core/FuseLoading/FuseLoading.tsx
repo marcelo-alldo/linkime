@@ -3,6 +3,7 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import Box from '@mui/material/Box';
 import themesConfig from '@/configs/themesConfig';
+import Logo from '@/components/theme-layouts/components/Logo';
 
 export type FuseLoadingProps = {
   delay?: number;
@@ -26,7 +27,7 @@ function FuseLoading(props: FuseLoadingProps) {
   }, delay);
 
   return (
-    <Box sx={{ backgroundColor: theme.palette.secondary.main }} className="flex flex-1">
+    <Box sx={{ backgroundColor: theme.palette.background.default }} className="flex flex-1">
       <div
         className={clsx(
           className,
@@ -34,7 +35,7 @@ function FuseLoading(props: FuseLoadingProps) {
           !showLoading ? 'hidden' : '',
         )}
       >
-        <img width="200" src="assets/images/logo/alldo-sem-fundo-robot.png" alt="logo" />
+        <Logo />
         <Box
           id="spinner"
           sx={{

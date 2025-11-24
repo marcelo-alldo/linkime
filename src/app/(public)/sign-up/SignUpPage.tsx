@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import JwtSignUpTab from './tabs/JwSignUpTab';
 import { useTheme } from '@mui/system';
+import Logo from '@/components/theme-layouts/components/Logo';
 
 /**
  * The sign up page.
@@ -15,7 +16,7 @@ function SignUpPage() {
     <div className="flex min-w-0 flex-1 flex-col items-center sm:flex-row sm:justify-center md:items-start md:justify-start">
       <Paper className="h-full w-full px-4 py-2 ltr:border-r-1 rtl:border-l-1 sm:h-auto sm:w-auto sm:rounded-xl sm:p-12 sm:shadow-sm md:flex md:h-full md:w-1/2 md:items-center md:justify-end md:rounded-none md:p-16 md:shadow-none">
         <div className="mx-auto w-full max-w-80 sm:mx-0 sm:w-80">
-          <img className="w-128" src={import.meta.env.VITE_APP_LOGO} alt="logo" />
+          <Logo />
 
           <Typography className="mt-8 text-4xl font-extrabold leading-[1.25] tracking-tight">Criar conta</Typography>
           <div className="mt-0.5 flex items-baseline font-medium">

@@ -3,17 +3,17 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { darken, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import clsx from 'clsx';
 import { motion } from 'motion/react';
 import PricingCard from './components/PricingCard';
-import PricingFeatureItem from './components/PricingFeatureItem';
 import PricingItemType from './PricingItemType';
-import { Grid, useMediaQuery } from '@mui/material';
+import { alpha, Grid, Paper, useMediaQuery } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useNavigate } from 'react-router';
+import Step from './components/Step';
+import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 /**
  * The simple pricing page.
@@ -38,6 +38,65 @@ function Preview() {
   const item = {
     hidden: { opacity: 0, y: 100 },
     show: { opacity: 1, y: 0 },
+  };
+
+  // Variants para o logo "Linkime"
+  const logoContainer = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
+  const linkVariant = {
+    hidden: { opacity: 0, x: -140, rotate: -8, scale: 0.9 },
+    show: {
+      opacity: 1,
+      x: 0,
+      rotate: 0,
+      scale: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 500,
+        damping: 18,
+        bounce: 0.45,
+      },
+    },
+  };
+
+  const iVariant = {
+    hidden: { opacity: 0, y: -160, scale: 0.85 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        delay: 0.2,
+        type: 'spring',
+        stiffness: 520,
+        damping: 17,
+        bounce: 0.5,
+      },
+    },
+  };
+
+  const meVariant = {
+    hidden: { opacity: 0, x: 150, rotate: 8, scale: 0.9 },
+    show: {
+      opacity: 1,
+      x: 0,
+      rotate: 0,
+      scale: 1,
+      transition: {
+        delay: 0.4,
+        type: 'spring',
+        stiffness: 500,
+        damping: 18,
+        bounce: 0.45,
+      },
+    },
   };
 
   const handlePosition = (position: number | string) => {
@@ -91,16 +150,13 @@ function Preview() {
     <div className="relative flex min-w-0 flex-auto flex-col overflow-hidden">
       <Box
         sx={{
-          backgroundColor: (theme) => theme.palette.secondary.main,
+          backgroundColor: (theme) => theme.palette.background.default,
           minHeight: '80vh',
-          backgroundImage: 'url(/assets/images/banner/back-banner.png)', // ajuste o caminho conforme necessário
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'right top',
-          backgroundSize: 'contain', // ajuste conforme o tamanho desejado
           position: 'relative',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          flexDirection: 'column',
         }}
       >
         <Box
@@ -115,10 +171,6 @@ function Preview() {
           }}
           className="bg-black/10"
         >
-          <Box height="80%">
-            <img className="h-full" src={import.meta.env.VITE_APP_LOGO}></img>
-          </Box>
-
           <Box sx={{ marginLeft: 'auto', marginRight: '20px' }} display={'flex'} alignItems={'center'} height={'100%'}>
             <Button onClick={() => navigate('/sign-in')} variant="contained" sx={{ marginRight: '20px' }} color="secondary">
               Entrar
@@ -128,42 +180,26 @@ function Preview() {
             </Button>
           </Box>
         </Box>
-        <motion.div
-          initial={{ opacity: 0, x: 400 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ opacity: { duration: 0.3 }, x: { duration: 1, ease: 'easeOut' } }}
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            right: 0,
-            minWidth: '100%',
-            minHeight: '70%',
-            backgroundImage: `url(${import.meta.env.VITE_APP_3D_LOGO})`, // ajuste o caminho conforme necessário
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: isMobile ? '90% 300px' : '90% 25px',
-            backgroundSize: 'contain', // ajuste conforme o tamanho desejado
-          }}
-        ></motion.div>
 
-        <motion.div
-          initial={{ rotate: 90 }}
-          animate={{ rotate: 0 }}
-          transition={{ duration: 3, ease: 'linear' }}
-          style={{ position: 'absolute', bottom: -100, left: -150, width: '600px', height: '600px', transformOrigin: '50% 50%' }}
-          className="hidden md:block"
-        >
-          <Box
-            sx={{
-              width: '100%',
-              height: '100%',
-              backgroundImage: 'url(/assets/images/banner/world.png)',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center center',
-              backgroundSize: 'contain',
-            }}
-          />
-        </motion.div>
-
+        <Box sx={{ width: '75%', padding: '20px', zIndex: 1 }} className="relative">
+          <motion.div className="flex items-center justify-center" variants={logoContainer} initial="hidden" animate="show">
+            <motion.span variants={linkVariant} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }} className="relative z-10">
+              <Typography component="span" fontSize={isMobile ? '48px' : '80px'} sx={{ color: 'white' }} fontWeight={700}>
+                Link
+              </Typography>
+            </motion.span>
+            <motion.span variants={iVariant} whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.9 }}>
+              <Typography component="span" fontSize={isMobile ? '48px' : '80px'} color="secondary" fontWeight={700}>
+                i
+              </Typography>
+            </motion.span>
+            <motion.span variants={meVariant} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }} className="relative z-10">
+              <Typography component="span" fontSize={isMobile ? '48px' : '80px'} sx={{ color: 'white' }} fontWeight={700}>
+                me
+              </Typography>
+            </motion.span>
+          </motion.div>
+        </Box>
         <motion.div
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -173,77 +209,143 @@ function Preview() {
           }}
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
         >
-          <Box sx={{ width: '75%', padding: '20px', zIndex: 1 }} className="relative">
-            <div className="absolute inset-0 rounded-xl  bg-black/90 to-transparent"></div>
-            <Typography variant="body2" fontSize={'40px'} sx={{ color: 'white' }} className="relative z-10">
-              Oi! Sou o{' '}
-              <Typography component="span" fontSize={'40px'} color="secondary" fontWeight={700}>
-                Alldo
-              </Typography>
-              , <br />
-              converso
-              <Typography component="span" fontSize={'40px'} color="secondary" fontWeight={700}>
-                {' '}
-                como gente
-              </Typography>{' '}
-              <br></br>e automatizo como{' '}
-              <Typography component="span" fontSize={'40px'} color="secondary" fontWeight={700}>
-                IA
-              </Typography>
-              .
-            </Typography>
-          </Box>
           <Box sx={{ width: '60%', padding: '20px', zIndex: 1 }} className="relative hidden md:block">
-            <Typography component={'p'} sx={{ color: 'white' }} fontSize={'20px'} fontWeight={500}>
-              Criado com inteligência artificial,
-              <br />
-              <Typography sx={{ color: 'white' }} component="span" fontSize={'20px'} fontWeight={800}>
-                {' '}
-                disponível 24/7.
-              </Typography>{' '}
-              Alldo transforma atendimento em experiência.
+            <Typography component={'p'} sx={{ color: 'white' }} fontSize={'40px'} fontWeight={500}>
+              Transforme qualquer evento em uma máquina de conexões reais — direto pelo WhatsApp.
+            </Typography>
+            <Typography color="text.secondary" component={'p'} fontSize={'18px'} fontWeight={500} className="mt-8">
+              Perfeito para qualquer evento: palestras, conferências, congressos, workshops, lives e muito mais.
             </Typography>
           </Box>
         </motion.div>
       </Box>
-      <Paper className="flex flex-col items-center px-6 py-10 sm:px-16 sm:pb-20 sm:pt-18">
+      <Box
+        className="flex flex-col items-center px-6 py-10 sm:px-16 sm:pb-20 sm:pt-18"
+        sx={{
+          background: `radial-gradient(50% 40% at 50% 45%, ${alpha(theme.palette.secondary.main, 0.12)} 0%, rgba(0,0,0,0) 100%)`,
+        }}
+      >
+        <div className="container">
+          <Grid container spacing={4}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <div>
+                <Typography id="funcionalides" className="mb-5 text-4xl font-extrabold leading-[1.25] tracking-tight sm:text-7xl">
+                  Por que usar o Linkime?
+                </Typography>
+                <Typography className="mt-0.5 text-xl" color="text.secondary">
+                  Porque seu evento merece conexões de verdade — simples, rápidas e pelo WhatsApp.
+                </Typography>
+              </div>
+
+              <div className="mt-12 flex items-center gap-2">
+                <FuseSvgIcon size={30} color={'secondary'}>
+                  heroicons-outline:link
+                </FuseSvgIcon>{' '}
+                <Typography style={{ fontSize: '16px' }}>Tranformar seu evento em uma ferramenta de conexões reais</Typography>
+              </div>
+
+              <div className="mt-6 flex items-center gap-2">
+                <FuseSvgIcon size={30} color={'secondary'}>
+                  heroicons-outline:cog-8-tooth
+                </FuseSvgIcon>{' '}
+                <Typography style={{ fontSize: '16px' }}>Controle total sobre as conexões e interações durante o evento</Typography>
+              </div>
+
+              <div className="mt-6 flex items-center gap-2">
+                <FuseSvgIcon size={30} color={'secondary'}>
+                  heroicons-outline:presentation-chart-line
+                </FuseSvgIcon>{' '}
+                <Typography style={{ fontSize: '16px' }}>Lista de participantes categorizado por setor e ramo de atividade</Typography>
+              </div>
+
+              <div className="mt-6 flex items-center gap-2">
+                <FuseSvgIcon size={30} color={'secondary'}>
+                  heroicons-outline:calendar-date-range
+                </FuseSvgIcon>{' '}
+                <Typography style={{ fontSize: '16px' }}>Acesso a leads categorizados para seus próximos eventos</Typography>
+              </div>
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Paper
+                sx={{
+                  minHeight: 400,
+                  backgroundImage: `url(assets/images/evento.png)`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center top',
+                  backgroundSize: 'cover',
+                }}
+              ></Paper>
+            </Grid>
+          </Grid>
+        </div>
+      </Box>
+      <Box className="flex flex-col items-center px-6 py-10 sm:px-16 sm:pb-20 sm:pt-18">
         <div className="container">
           <div>
             <Typography id="funcionalides" className="mb-5 text-center text-4xl font-extrabold leading-[1.25] tracking-tight sm:text-7xl">
-              Para quais empresas o Alldo foi feito?
+              Como funciona?
             </Typography>
-            <Typography className="mt-0.5 text-xl text-justify" color="text.secondary">
-              <strong>Alldo é o assistente virtual ideal para empresas que não querem perder nenhum cliente.</strong> Perfeito para clínicas, salões,
-              consultórios, estúdios, imobiliárias e qualquer negócio que dependa de agendamentos ou triagem de clientes, o Alldo atende
-              automaticamente pelo WhatsApp, 24 horas por dia, 7 dias por semana. Ele responde dúvidas, marca horários, organiza sua agenda e ainda
-              atua como um SDR inteligente — filtrando potenciais clientes com perguntas estratégicas, como renda, disponibilidade ou perfil de
-              compra, antes de passar o lead para você.
+            <Typography className="mt-0.5 text-xl text-center" color="text.secondary">
+              Conecte seus participantes de forma simples, rápida e gamificada — em apenas 6 passos.
             </Typography>
           </div>
-          <div className="mt-12 grid w-full grid-cols-1 gap-x-6 gap-y-12 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-16">
-            <PricingFeatureItem
-              icon="heroicons-outline:calendar-days"
-              title="Agenda cheia? Deixa que o Alldo organiza."
-              subtitle="O Alldo marca, remarca e cancela compromissos automaticamente via WhatsApp. Ele sincroniza com sua agenda em tempo real e evita conflitos de horários, mantendo sua rotina organizada sem esforço — mesmo enquanto você dorme."
-            />
-            <PricingFeatureItem
-              icon="heroicons-outline:funnel"
-              title="Filtre leads e ganhe."
-              subtitle="O Alldo conversa com seus clientes pelo WhatsApp e identifica quem realmente está pronto para comprar. Ele faz perguntas estratégicas, como renda, localização ou necessidade, e só repassa os leads qualificados para você ou seu time de vendas."
-            />
-            <PricingFeatureItem
-              icon="heroicons-outline:clock"
-              title="Seu atendimento não tira férias."
-              subtitle="O Alldo está disponível 24 horas por dia, 7 dias por semana, atendendo seus clientes pelo WhatsApp mesmo fora do expediente. Ele responde dúvidas, agenda compromissos, qualifica leads e mantém seu negócio ativo o tempo todo."
-            />
-          </div>
+          <Grid container spacing={4} className="mt-10">
+            <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+              <Step
+                icon={<FuseSvgIcon size={25}>heroicons-outline:calendar-days</FuseSvgIcon>}
+                title="Crie o evento"
+                description="Na aplicação você cria seu evento com todas as informações e detalhes necessários"
+                stepNumber={1}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+              <Step
+                icon={<FuseSvgIcon size={25}>heroicons-outline:qr-code</FuseSvgIcon>}
+                title="Gere o QR Code"
+                description="Sistema gera automaticamente um QR Code único para seu evento"
+                stepNumber={2}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+              <Step
+                icon={<FuseSvgIcon size={25}>heroicons-outline:device-phone-mobile</FuseSvgIcon>}
+                title="Escaneie com o celular"
+                description="Os participantes escaneiam o código gerado com a câmera do celular"
+                stepNumber={3}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+              <Step
+                icon={<FuseSvgIcon size={25}>heroicons-outline:paper-airplane</FuseSvgIcon>}
+                title="Receba seu Linkime"
+                description="Cada participante recebe seu QR Code pessoal do evento via WhatsApp"
+                stepNumber={4}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+              <Step
+                icon={<FuseSvgIcon size={25}>heroicons-outline:share</FuseSvgIcon>}
+                title="Compartilhe e conecte"
+                description="Mostre seu QR Code para os outros participantes para validar que fez o networking"
+                stepNumber={5}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+              <Step
+                icon={<FuseSvgIcon size={25}>heroicons-outline:trophy</FuseSvgIcon>}
+                title="Ganhe pontos"
+                description="Cada conexão validada rende pontos que podem ser trocados por prêmios"
+                stepNumber={6}
+              />
+            </Grid>
+          </Grid>
         </div>
-      </Paper>
+      </Box>
       <Box sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} className="px-6 py-10 sm:px-16 sm:py-12">
         <div className="mx-auto flex container flex-col items-center text-center">
           <Typography className="text-3xl font-extrabold leading-6 sm:text-5xl sm:leading-10">Crie sua conta gratuita,</Typography>
           <Typography className="mt-2 text-3xl font-extrabold leading-6 sm:text-5xl sm:leading-10 opacity-75" color="primary.ligth">
-            para conhecer a ferramenta. <br></br>Não precisa cadastrar cartão.
+            para conhecer a ferramenta.
           </Typography>
           <Button onClick={() => navigate('/sign-up')} className="mt-8 px-12 text-lg" size="large" color="secondary" variant="contained">
             Quero conhecer
@@ -266,12 +368,12 @@ function Preview() {
         </svg>
         <div id="planos" className="flex flex-col items-center">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}>
-            <div className="mt-1 text-center text-4xl font-extrabold leading-[1.25] tracking-tight sm:text-7xl">Seu negócio não para.</div>
+            <div className="mt-1 text-center text-4xl font-extrabold leading-[1.25] tracking-tight sm:text-7xl">Seu evento no próximo nível</div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.15 } }}>
             <Typography className="mt-3 text-center tracking-tight sm:text-2xl" color="text.secondary">
-              Com o Alldo, seu atendimento também não.
+              Torne seu evento mais profissional e entregue uma experiência inesquecível.
             </Typography>
           </motion.div>
 
@@ -330,30 +432,27 @@ function Preview() {
                   className="lg:rounded-r-none"
                   period={period}
                   url="/sign-up"
-                  title="Atendimento"
-                  yearlyPrice={period === 'mês' ? 'R$ 2.268' : 'R$ 149'}
-                  monthlyPrice={period === 'mês' ? 'R$ 189' : 'R$ 1.788'}
+                  title="Starter"
+                  yearlyPrice={period === 'mês' ? 'R$ 11.880' : 'R$ 890'}
+                  monthlyPrice={period === 'mês' ? 'R$ 990' : 'R$ 10.680'}
                   buttonTitle="Comece agora"
                   details={
                     <div className="mt-8 space-y-2">
                       <Typography className="ml-0.5 leading-5">
-                        <b>até 500</b> Leads / Contatos ativos
+                        <b>até 1000</b> Participantes por evento
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>0</b> Fluxo de atendimento
+                        <b>10</b> eventos por mês
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>Sem</b> Inteligência Artificial
+                        <b>Compartilhado</b> com outros eventos
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>até 5</b> Atendentes
+                        <b>0</b> de créditos
                       </Typography>
 
                       <Typography className="ml-0.5 leading-5">
-                        Atendimento via <b>WhatsApp API Oficial</b>
-                      </Typography>
-                      <Typography className="ml-0.5 leading-5">
-                        Funções <b>Padrões</b>
+                        Suporte via <b>e-mail e whatsapp</b>
                       </Typography>
                     </div>
                   }
@@ -364,34 +463,28 @@ function Preview() {
                   className="lg:pb-28 lg:shadow-2xl"
                   url="/sign-up"
                   period={period}
-                  title="Padrão"
+                  title="Profissional"
                   subtitle="Fluxo padrão com infinitos leads e contatos"
-                  yearlyPrice={period === 'mês' ? 'R$ 5.988' : 'R$ 399'}
-                  monthlyPrice={period === 'mês' ? 'R$ 499' : 'R$ 4.788'}
+                  yearlyPrice={period === 'mês' ? 'R$ 47.880' : 'R$ 3.590'}
+                  monthlyPrice={period === 'mês' ? 'R$ 3.990' : 'R$ 43.080'}
                   buttonTitle="Comece agora"
                   details={
                     <div className="mt-8 space-y-2">
                       <Typography className="ml-0.5 leading-5">
-                        <b>até 2.000</b> Leads / Contatos
+                        <b>até 3000</b> Participantes por evento
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>1</b> Fluxo de atendimento
+                        <b>20</b> eventos por mês
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>Com</b> Inteligência Artificial
+                        <b>Compartilhado</b> com outros eventos
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>até 10</b> Atendentes
+                        <b>1.000</b> de créditos
                       </Typography>
-                      <Typography className="ml-0.5 leading-5">Fluxo padrão</Typography>
+
                       <Typography className="ml-0.5 leading-5">
-                        <b>Google</b> Calendar
-                      </Typography>
-                      <Typography className="ml-0.5 leading-5">
-                        Atendimento via <b>WhatsApp API Oficial</b>
-                      </Typography>
-                      <Typography className="ml-0.5 leading-5">
-                        Funções <b>Padrões</b>
+                        Suporte via <b>telefone e whatsapp</b>
                       </Typography>
                     </div>
                   }
@@ -402,37 +495,30 @@ function Preview() {
                 <PricingCard
                   className="lg:rounded-l-none"
                   period={period}
-                  title="Customizada"
+                  title="Premium Private"
                   target
-                  url={`https://wa.me/${contact1Formatted}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre o Alldo CUSTOMIZADO.')}`}
+                  url={`https://wa.me/${contact1Formatted}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre o Linkime PREMIUM.')}`}
                   subtitle="Fluxo customizada com infinitos leads e contatos"
-                  yearlyPrice={period === 'mês' ? 'R$ 8.388' : 'R$ 559'}
-                  monthlyPrice={period === 'mês' ? 'R$ 699' : 'R$ 6.708'}
+                  yearlyPrice={period === 'mês' ? 'R$ 83.880' : 'R$ 6.290'}
+                  monthlyPrice={period === 'mês' ? 'R$ 6.990' : 'R$ 75.480'}
                   buttonTitle="Falar com um especialista"
                   details={
                     <div className="mt-8 space-y-2">
                       <Typography className="ml-0.5 leading-5">
-                        <b>até 5.000</b> Leads / Contatos ativos
+                        <b>até 5000</b> Participantes por evento
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>até 3</b> Fluxos de atendimento
+                        <b>30</b> eventos por mês
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>Com</b> Inteligência Artificial
+                        <b>Sem compartilhamento</b> com outros eventos
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>até 20</b> Atendentes
-                      </Typography>
-                      <Typography className="ml-0.5 leading-5">Fluxo personalizado</Typography>
-                      <Typography className="ml-0.5 leading-5">
-                        <b>Google</b> Calendar
+                        <b>3.000</b> de créditos
                       </Typography>
 
                       <Typography className="ml-0.5 leading-5">
-                        Atendimento via <b>WhatsApp API Oficial</b>
-                      </Typography>
-                      <Typography className="ml-0.5 leading-5">
-                        Funções <b>Avançadas</b>
+                        Suporte via <b>telefone e whatsapp</b>
                       </Typography>
                     </div>
                   }

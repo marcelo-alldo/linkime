@@ -16,7 +16,7 @@ export const lightPaletteText = {
  */
 export const darkPaletteText = {
   primary: 'rgb(255,255,255)',
-  secondary: 'rgb(148, 163, 184)',
+  secondary: 'rgb(187, 187, 187)',
   disabled: 'rgb(156, 163, 175)',
 };
 
@@ -26,12 +26,9 @@ export const darkPaletteText = {
 export const themesConfig: FuseThemesType = {
   default: {
     palette: {
-      mode: 'light',
-      divider: 'rgba(0, 0, 0, 0.12)',
-      text: {
-        primary: '#212121',
-        secondary: '#5F6368',
-      },
+      mode: 'dark',
+      divider: 'rgba(255, 255, 255, 0.12)',
+      text: darkPaletteText,
       common: {
         black: '#000000',
         white: '#FFFFFF',
@@ -49,8 +46,8 @@ export const themesConfig: FuseThemesType = {
         contrastText: '#000000',
       },
       background: {
-        paper: '#F4F4F4',
-        default: '#E8E8E8',
+        paper: '#1c211f',
+        default: '#121614',
       },
       error: {
         light: '#FFCDD2',
@@ -151,7 +148,7 @@ export const themesConfig: FuseThemesType = {
         contrastText: '#FFFFFF',
       },
       secondary: {
-          light: '#1aff6e', // tom mais claro do verde principal
+        light: '#1aff6e', // tom mais claro do verde principal
         main: '#00FF00', // verde principal
         dark: '#006400', // tom mais escuro e mais fechado do verde
         contrastText: '#000000',

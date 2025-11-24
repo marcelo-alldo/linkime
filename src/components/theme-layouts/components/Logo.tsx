@@ -1,5 +1,6 @@
-import { useAppSelector } from '@/store/hooks';
+import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { motion } from 'motion/react';
 
 const Root = styled('div')(({ theme }) => ({
   '& > .logo-icon': {
@@ -20,22 +21,28 @@ const Root = styled('div')(({ theme }) => ({
  * The logo component.
  */
 function Logo() {
-  const navbar = useAppSelector((state) => state.navbar);
-
   return (
     <Root className="flex flex-1 items-center space-x-3">
       <div className="flex flex-1 items-center ">
-        <div
-          className="flex items-center"
-          style={{
-            width: navbar.foldedOpen ? 170 : 55,
-            height: 60,
-            backgroundImage: navbar.foldedOpen ? `url(${import.meta.env.VITE_APP_LOGO_MENU})` : `url(${import.meta.env.VITE_APP_LOGO_MENU_ICONE})`,
-            backgroundSize: 'cover', // ou 'cover'
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center center',
-          }}
-        ></div>
+        <Box sx={{ width: '100%', zIndex: 1 }} className="relative">
+          <motion.div className="flex items-center justify-center" initial="hidden" animate="show">
+            <motion.span whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }} className="relative z-10">
+              <Typography component="span" sx={{ color: 'white', fontSize: '35px' }} fontWeight={700}>
+                Link
+              </Typography>
+            </motion.span>
+            <motion.span whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.9 }}>
+              <Typography sx={{ fontSize: '35px', color: '#00FF00' }} component="span" color="secondary" fontWeight={700}>
+                i
+              </Typography>
+            </motion.span>
+            <motion.span whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }} className="relative z-10">
+              <Typography component="span" sx={{ color: 'white', fontSize: '35px' }} fontWeight={700}>
+                me
+              </Typography>
+            </motion.span>
+          </motion.div>
+        </Box>
         <div className="logo-text flex flex-col flex-auto gap-0.5"></div>
       </div>
     </Root>
