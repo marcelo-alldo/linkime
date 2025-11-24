@@ -135,6 +135,15 @@ const navigationConfig: FuseNavItemType[] = [
     // auth: authRoles.user,
   },
   {
+    id: 'my-events',
+    title: 'Meus Eventos',
+    translate: 'Meus Eventos',
+    type: 'item',
+    icon: 'heroicons-outline:calendar-days',
+    url: 'my-events',
+    // auth: authRoles.collaborator,
+  },
+  {
     id: 'divider',
     type: 'divider',
     auth: authRoles.user,
