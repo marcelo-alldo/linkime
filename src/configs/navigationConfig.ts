@@ -136,7 +136,7 @@ const navigationConfig: FuseNavItemType[] = [
   },
   {
     id: 'my-events',
-    title: 'Meus Eventos',
+    title: 'Meus\u00A0Eventos',
     translate: 'Meus Eventos',
     type: 'item',
     icon: 'heroicons-outline:calendar-days',
