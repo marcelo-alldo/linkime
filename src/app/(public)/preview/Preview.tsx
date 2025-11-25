@@ -7,13 +7,15 @@ import clsx from 'clsx';
 import { motion } from 'motion/react';
 import PricingCard from './components/PricingCard';
 import PricingItemType from './PricingItemType';
-import { alpha, Grid, Paper, useMediaQuery } from '@mui/material';
+import { alpha, Grid, Paper, useMediaQuery, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useNavigate } from 'react-router';
 import Step from './components/Step';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import Logo from '@/components/theme-layouts/components/Logo';
 
 /**
  * The simple pricing page.
@@ -209,8 +211,8 @@ function Preview() {
           }}
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
         >
-          <Box sx={{ width: '60%', padding: '20px', zIndex: 1 }} className="relative hidden md:block">
-            <Typography component={'p'} sx={{ color: 'white' }} fontSize={'40px'} fontWeight={500}>
+          <Box sx={{ width: { md: '60%', xs: '90%' }, padding: { md: '20px', xs: '10px' }, zIndex: 1 }} className="relative ">
+            <Typography component={'p'} sx={{ color: 'white' }} fontSize={{ md: '40px', xs: '24px' }} fontWeight={500}>
               Transforme qualquer evento em uma máquina de conexões reais — direto pelo WhatsApp.
             </Typography>
             <Typography color="text.secondary" component={'p'} fontSize={'18px'} fontWeight={500} className="mt-8">
@@ -433,8 +435,8 @@ function Preview() {
                   period={period}
                   url="/sign-up"
                   title="Starter"
-                  yearlyPrice={period === 'mês' ? 'R$ 11.880' : 'R$ 890'}
-                  monthlyPrice={period === 'mês' ? 'R$ 990' : 'R$ 10.680'}
+                  yearlyPrice={period === 'mês' ? 'R$ 1.164' : 'R$ 77'}
+                  monthlyPrice={period === 'mês' ? 'R$ 97' : 'R$ 924'}
                   buttonTitle="Comece agora"
                   details={
                     <div className="mt-8 space-y-2">
@@ -448,7 +450,7 @@ function Preview() {
                         <b>Compartilhado</b> com outros eventos
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>0</b> de créditos
+                        <b>0</b> de créditos por mês
                       </Typography>
 
                       <Typography className="ml-0.5 leading-5">
@@ -465,8 +467,8 @@ function Preview() {
                   period={period}
                   title="Profissional"
                   subtitle="Fluxo padrão com infinitos leads e contatos"
-                  yearlyPrice={period === 'mês' ? 'R$ 47.880' : 'R$ 3.590'}
-                  monthlyPrice={period === 'mês' ? 'R$ 3.990' : 'R$ 43.080'}
+                  yearlyPrice={period === 'mês' ? 'R$ 14.364' : 'R$ 957'}
+                  monthlyPrice={period === 'mês' ? 'R$ 1.197' : 'R$ 11.484'}
                   buttonTitle="Comece agora"
                   details={
                     <div className="mt-8 space-y-2">
@@ -480,7 +482,7 @@ function Preview() {
                         <b>Compartilhado</b> com outros eventos
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>1.000</b> de créditos
+                        <b>1.000</b> de créditos por mês
                       </Typography>
 
                       <Typography className="ml-0.5 leading-5">
@@ -499,8 +501,8 @@ function Preview() {
                   target
                   url={`https://wa.me/${contact1Formatted}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre o Linkime PREMIUM.')}`}
                   subtitle="Fluxo customizada com infinitos leads e contatos"
-                  yearlyPrice={period === 'mês' ? 'R$ 83.880' : 'R$ 6.290'}
-                  monthlyPrice={period === 'mês' ? 'R$ 6.990' : 'R$ 75.480'}
+                  yearlyPrice={period === 'mês' ? 'R$ 47.964' : 'R$ 3.197'}
+                  monthlyPrice={period === 'mês' ? 'R$ 3.997' : 'R$ 38.364'}
                   buttonTitle="Falar com um especialista"
                   details={
                     <div className="mt-8 space-y-2">
@@ -514,7 +516,7 @@ function Preview() {
                         <b>Sem compartilhamento</b> com outros eventos
                       </Typography>
                       <Typography className="ml-0.5 leading-5">
-                        <b>3.000</b> de créditos
+                        <b>3.000</b> de créditos por mês
                       </Typography>
 
                       <Typography className="ml-0.5 leading-5">
@@ -528,61 +530,101 @@ function Preview() {
           </div>
         </div>
       </div>
-      <div id="duvidas" className="flex flex-col items-center px-6 pb-8 pt-3 sm:px-16 sm:pb-20 sm:pt-18" style={{ backgroundColor: 'white' }}>
+      <div
+        id="duvidas"
+        className="flex flex-col items-center px-6 pb-8 pt-3 sm:px-16 sm:pb-20 sm:pt-18"
+        style={{
+          backgroundColor: theme.palette.background.paper,
+          /* Substitua o caminho abaixo pela imagem desejada dentro de public/assets/images */
+          backgroundImage: `url(/assets/images/woman.png)`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '40% auto',
+          backgroundPosition: 'left top',
+        }}
+      >
         <div className="container">
           <div>
-            <Typography className="text-4xl font-extrabold leading-[1.25] tracking-tight">Dúvidas frequentes</Typography>
-            <Typography className="mt-2 max-w-3xl text-xl" color="text.secondary">
-              Ficou alguma dúvida? Converse com um especialista e descubra como o Alldo pode te ajudar.
+            <Typography textAlign={'right'} className="text-4xl font-extrabold leading-[1.25] tracking-tight">
+              Dúvidas frequentes
+            </Typography>
+            <Typography textAlign={'right'} className="mt-2  text-xl" color="text.secondary">
+              Confira as respostas para as perguntas mais comuns e aproveite o Linkime com confiança.
             </Typography>
           </div>
-          <div className="mt-12 grid w-full grid-cols-1 gap-x-6 gap-y-12 sm:mt-16 sm:grid-cols-2 lg:gap-x-16">
-            <div>
-              <Typography className="text-xl font-semibold">Preciso estar online para o Alldo funcionar?</Typography>
-              <Typography className="mt-2 leading-6" color="text.secondary">
-                Não. O Alldo funciona 24 horas por dia, 7 dias por semana, sem que você precise estar presente. Ele cuida do atendimento enquanto você
-                foca em outras tarefas — ou simplesmente descansa.
-              </Typography>
-            </div>
-            <div>
-              <Typography className="text-xl font-semibold">O Alldo serve para qualquer tipo de negócio?</Typography>
-              <Typography className="mt-0.5 leading-6" color="text.secondary">
-                Sim! O Alldo é ideal para empresas que recebem mensagens de clientes e precisam agendar, vender ou qualificar. Ele é usado por
-                clínicas, salões, consultórios, imobiliárias, estúdios, prestadores de serviço e muito mais.
-              </Typography>
-            </div>
-            <div>
-              <Typography className="text-xl font-semibold">O Alldo substitui um atendente humano?</Typography>
-              <Typography className="mt-2 leading-6" color="text.secondary">
-                O Alldo automatiza tarefas repetitivas como responder perguntas frequentes, agendar compromissos e filtrar clientes. Ele não substitui
-                sua equipe, mas atua como um reforço inteligente que trabalha sem parar — e sem erros.
-              </Typography>
-            </div>
-            <div>
-              <Typography className="text-xl font-semibold">Posso cancelar meu plano a qualquer momento?</Typography>
-              <Typography className="mt-2 leading-6" color="text.secondary">
-                Sim! Você pode solicitar o cancelamento a qualquer momento.
-              </Typography>
-              <Typography className="mt-2 leading-6" color="text.secondary">
-                Para <b>planos mensais</b>, o cancelamento é efetivado até o final do mês vigente, sem cobrança no mês seguinte.
-              </Typography>
-              <Typography className="mt-2 leading-6" color="text.secondary">
-                Para <b>planos anuais</b>, o cancelamento também é feito até o fim do mês atual, mas o valor investido em personalizações e
-                configurações iniciais não é reembolsável.
-              </Typography>
-            </div>
-          </div>
+          <Grid container spacing={1} className="mt-12 sm:mt-16">
+            <Grid size={{ xs: 0, md: 4 }} />
+            <Grid size={{ xs: 12, md: 8 }}>
+              <Accordion
+                defaultExpanded
+                sx={{ background: (theme) => theme.palette.background.default, borderRadius: '15px !important', padding: 1 }}
+              >
+                <AccordionSummary expandIcon={<ExpandMoreIcon color="secondary" />}>
+                  <Typography variant="h5">Preciso instalar algum aplicativo?</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography className="leading-6" color="text.secondary">
+                    Não. O Linkime funciona totalmente online, sem necessidade de downloads. Basta acessar o site e criar o seu evento.
+                  </Typography>
+                  <Typography className="mt-2 leading-6" color="text.secondary">
+                    Para <b>os participantes</b>, toda a interação é feita via WhatsApp, sem necessidade de instalar nada adicional.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+
+            <Grid size={{ xs: 0, md: 4 }} />
+            <Grid size={{ xs: 12, md: 8 }}>
+              <Accordion sx={{ background: (theme) => theme.palette.background.default, borderRadius: '15px !important', padding: 1 }}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon color="secondary" />}>
+                  <Typography variant="h5">Para que servem os créditos?</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography className="leading-6" color="text.secondary">
+                    Os créditos permitem que você adquira leads qualificados de outros eventos, filtrando por categoria, público-alvo e ticket médio.
+                    Assim, você expande sua base de contatos de forma estratégica e segmentada.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+            <Grid size={{ xs: 0, md: 4 }} />
+            <Grid size={{ xs: 12, md: 8 }}>
+              <Accordion sx={{ background: (theme) => theme.palette.background.default, borderRadius: '15px !important', padding: 1 }}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon color="secondary" />}>
+                  <Typography variant="h5">O Linkime funciona para eventos de qualquer tamanho?</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography className="leading-6" color="text.secondary">
+                    Sim! O Linkime foi desenvolvido para atender eventos pequenos, médios e grandes, ajudando organizadores a melhorar a experiência
+                    dos participantes e facilitar o networking.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+            <Grid size={{ xs: 0, md: 4 }} />
+            <Grid size={{ xs: 12, md: 8 }}>
+              <Accordion sx={{ background: (theme) => theme.palette.background.default, borderRadius: '15px !important', padding: 1 }}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon color="secondary" />}>
+                  <Typography variant="h5">Posso cancelar meu plano quando quiser?</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography className="leading-6" color="text.secondary">
+                    Sim. Você pode solicitar o cancelamento a qualquer momento. Porém, o acesso permanece ativo até o fim do ciclo atual de cobrança,
+                    já que o mês vigente não é reembolsável.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+          </Grid>
         </div>
       </div>
-      <div className="pt-20" style={{ backgroundColor: 'black' }}>
+      <div className="pt-20">
         <div className="container">
           <Grid container spacing={4} sx={{ padding: '20px' }} className="flex items-center justify-center text-white">
             {/* Logo e Slogan */}
             <Grid size={{ xs: 12, md: 4 }} className="flex items-center flex-col justify-center">
-              <img src={import.meta.env.VITE_APP_LOGO_FOOTER} width={'200px'} className="mb-5" alt="logo" />
+              <Logo size="large" />
               <Typography variant="h6" className="mt-2">
-                Seu assistente inteligente,
-                <br /> 24 horas por dia.
+                Transforme qualquer evento em uma máquina de conexões reais — direto pelo WhatsApp.
               </Typography>
             </Grid>
 

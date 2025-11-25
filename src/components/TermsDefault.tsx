@@ -3,118 +3,178 @@ import { Container, Typography, Divider, Box } from '@mui/material';
 export function TermsDefault() {
   return (
     <Container maxWidth="md" sx={{ py: 5 }}>
-      <Typography variant="h4" gutterBottom id="terms">
-        Termos de Uso
-      </Typography>
-      <Typography variant="body1" paragraph>
-        Alldo Assistente - Alldo Tecnologia Ltda - CNPJ 57.804.074/0001-06
-      </Typography>
-      <Typography variant="caption" display="block" gutterBottom>
-        Última atualização: 30 de maio de 2025
-      </Typography>
-
-      <Box mt={3}>
-        <Typography variant="h6">1. Aceitação dos Termos</Typography>
-        <Typography variant="body1" paragraph>
-          Ao utilizar a plataforma Alldo Assistente, você concorda com os presentes Termos de Uso. Caso não concorde, não utilize a plataforma.
+      <Box sx={{ py: 8, px: { xs: 2, md: 4 } }}>
+        {/* TÍTULO GERAL */}
+        <Typography variant="h4" gutterBottom>
+          Termos de Uso e Política de Privacidade – Linkime
         </Typography>
 
-        <Typography variant="h6">2. Descrição do Serviço</Typography>
-        <Typography variant="body1" paragraph>
-          A Alldo Assistente é uma aplicação baseada em inteligência artificial desenvolvida pela Alldo Tecnologia Ltda, que interage com leads e
-          contatos via WhatsApp de forma automatizada.
+        {/* TERMOS DE USO */}
+        <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
+          Termos de Uso
         </Typography>
 
-        <Typography variant="h6">3. Cadastro e Acesso</Typography>
         <Typography variant="body1" paragraph>
-          O usuário deve fornecer informações verídicas e manter seus dados atualizados. A responsabilidade pela guarda das credenciais de acesso é
-          exclusivamente do usuário.
+          Última atualização: 25/11/2025
         </Typography>
 
-        <Typography variant="h6">4. Responsabilidade pelo Uso</Typography>
         <Typography variant="body1" paragraph>
-          É expressamente proibido o envio de mensagens em massa (spam) ou comunicações não solicitadas. Caso o número de WhatsApp do usuário seja
-          bloqueado por uso indevido, a responsabilidade será exclusivamente do usuário.
+          Bem-vindo ao Linkime. Ao utilizar nossos serviços, você concorda integralmente com estes Termos de Uso. Caso não concorde com algum ponto,
+          recomendamos não utilizar a plataforma.
         </Typography>
 
-        <Typography variant="h6">5. Limitações de Uso</Typography>
+        <Typography variant="h6" gutterBottom>
+          1. Objeto
+        </Typography>
         <Typography variant="body1" paragraph>
-          É vedado utilizar a ferramenta para fins ilegais, abusivos ou fraudulentos, tentar acessar o sistema da Alldo sem autorização ou realizar
-          engenharia reversa.
+          O Linkime é uma plataforma que facilita interação, networking e compartilhamento de contatos entre participantes e organizadores de eventos,
+          além de permitir a aquisição de leads de outros eventos por meio de créditos.
         </Typography>
 
-        <Typography variant="h6">6. Suspensão ou Cancelamento</Typography>
+        <Typography variant="h6" gutterBottom>
+          2. Acesso à Plataforma
+        </Typography>
         <Typography variant="body1" paragraph>
-          A Alldo poderá suspender ou encerrar contas que violem estes Termos ou causem danos à plataforma.
+          Para utilizar o Linkime, o usuário deve fornecer informações verdadeiras e atualizadas. A plataforma pode ser acessada via navegador, sem
+          necessidade de instalação.
         </Typography>
 
-        <Typography variant="h6">7. Modificações nos Termos</Typography>
+        <Typography variant="h6" gutterBottom>
+          3. Cancelamento
+        </Typography>
         <Typography variant="body1" paragraph>
-          Estes Termos podem ser atualizados periodicamente. O uso contínuo da plataforma após modificações indica aceitação das novas condições.
+          O usuário pode solicitar o cancelamento do plano a qualquer momento. Contudo, o cancelamento será efetivado apenas ao final do ciclo vigente
+          de cobrança. Não há reembolso proporcional.
         </Typography>
 
-        <Typography variant="h6">8. Foro</Typography>
-        <Typography variant="body1" paragraph>
-          Fica eleito o foro da comarca de Novo Hamburgo/RS para resolver quaisquer questões oriundas destes Termos.
+        <Typography variant="h6" gutterBottom>
+          4. Créditos para Aquisição de Leads
         </Typography>
-      </Box>
-
-      <Divider sx={{ my: 5 }} id="start-privacy" />
-
-      <Typography variant="h4" gutterBottom>
-        Política de Privacidade
-      </Typography>
-      <Typography variant="body1" paragraph>
-        Alldo Assistente - Alldo Tecnologia Ltda - CNPJ 57.804.074/0001-06
-      </Typography>
-      <Typography variant="caption" display="block" gutterBottom>
-        Última atualização: 30 de maio de 2025
-      </Typography>
-
-      <Box mt={3}>
-        <Typography variant="h6">1. Coleta de Dados</Typography>
         <Typography variant="body1" paragraph>
-          Coletamos informações fornecidas voluntariamente como nome, e-mail, número de WhatsApp, dados de conversas com o bot, IP e navegador.
+          Dependendo do plano contratado, o usuário pode adquirir créditos para acessar e comprar leads de outros eventos, de acordo com categoria,
+          perfil de público e ticket médio.
         </Typography>
 
-        <Typography variant="h6">2. Uso das Informações</Typography>
+        <Typography variant="h6" gutterBottom>
+          5. Compartilhamento de Dados para Geração de Leads
+        </Typography>
         <Typography variant="body1" paragraph>
-          As informações são usadas para operar e melhorar o serviço, responder automaticamente e cumprir obrigações legais.
+          Ao utilizar o Linkime, você concorda expressamente que as seguintes informações da sua empresa podem ser compartilhadas com outros
+          organizadores de eventos dentro da plataforma:
         </Typography>
 
-        <Typography variant="h6">3. Compartilhamento de Dados</Typography>
-        <Typography variant="body1" paragraph>
-          Não compartilhamos dados com terceiros, exceto quando exigido por lei ou para operação da plataforma (ex: integrações com WhatsApp API).
+        <Typography variant="body2" paragraph sx={{ ml: 2 }}>
+          • Nome da empresa <br />
+          • Nome do representante <br />
+          • Telefone de contato <br />• Faixa de faturamento da empresa
         </Typography>
 
-        <Typography variant="h6">4. Segurança</Typography>
         <Typography variant="body1" paragraph>
-          Adotamos medidas de segurança para proteger seus dados. No entanto, nenhum sistema é 100% seguro e há risco residual.
+          Esse compartilhamento ocorre exclusivamente dentro do ecossistema Linkime, com o objetivo de facilitar networking e permitir transações de
+          aquisição de leads.
         </Typography>
 
-        <Typography variant="h6">5. Armazenamento e Retenção</Typography>
+        <Typography variant="h6" gutterBottom>
+          6. Responsabilidades do Usuário
+        </Typography>
         <Typography variant="body1" paragraph>
-          Os dados são armazenados com segurança e mantidos pelo tempo necessário conforme a finalidade ou exigência legal.
+          O usuário se compromete a utilizar a plataforma de forma legal, não violar seu funcionamento e respeitar a privacidade de outros
+          participantes e organizadores.
         </Typography>
 
-        <Typography variant="h6">6. Direitos do Titular</Typography>
+        <Typography variant="h6" gutterBottom>
+          7. Responsabilidades da Plataforma
+        </Typography>
         <Typography variant="body1" paragraph>
-          Você pode solicitar acesso, correção, exclusão ou portabilidade dos seus dados. Contato: contato@alldohost.com.br
+          O Linkime se compromete a disponibilizar o serviço conforme proposto, proteger dados conforme práticas adequadas e garantir estabilidade e
+          funcionamento contínuo, salvo casos de manutenção ou força maior.
         </Typography>
 
-        <Typography variant="h6">7. Uso de Cookies</Typography>
+        <Typography variant="h6" gutterBottom>
+          8. Modificações nos Termos
+        </Typography>
         <Typography variant="body1" paragraph>
-          Utilizamos cookies para melhorar a experiência do usuário. Eles podem ser desativados no navegador, com possíveis impactos no uso.
+          O Linkime pode alterar estes Termos a qualquer momento. As atualizações serão publicadas no site, e a continuidade do uso indica aceitação
+          das novas condições.
         </Typography>
 
-        <Typography variant="h6">8. Alterações nesta Política</Typography>
+        <Typography variant="h6" gutterBottom>
+          9. Foro
+        </Typography>
         <Typography variant="body1" paragraph>
-          Esta política pode ser modificada a qualquer momento. Alterações relevantes serão comunicadas pelos canais cadastrados.
+          Para resolver conflitos decorrentes do uso da plataforma, fica eleito o foro da comarca de [cidade/estado].
         </Typography>
 
-        <Typography variant="h6">9. Contato</Typography>
+        {/* POLÍTICA DE PRIVACIDADE */}
+        <Divider sx={{ my: 4 }} />
+
+        <Typography variant="h5" gutterBottom sx={{ mt: 6 }}>
+          Política de Privacidade
+        </Typography>
+
         <Typography variant="body1" paragraph>
-          Dúvidas ou solicitações: contato@alldohost.com.br
+          Última atualização: 25/11/2025
+        </Typography>
+
+        <Typography variant="body1" paragraph>
+          Esta Política de Privacidade explica como coletamos, usamos, armazenamos e compartilhamos seus dados.
+        </Typography>
+
+        <Typography variant="h6" gutterBottom>
+          1. Dados Coletados
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Podemos coletar nome, telefone, e-mail, nome da empresa, faixa de faturamento, informações do evento e dados técnicos de navegação.
+        </Typography>
+
+        <Typography variant="h6" gutterBottom>
+          2. Finalidade da Coleta
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Os dados são utilizados para gerenciar eventos, facilitar networking, gerar leads qualificados e melhorar a experiência do usuário.
+        </Typography>
+
+        <Typography variant="h6" gutterBottom>
+          3. Compartilhamento de Dados
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Ao aceitar esta Política, você declara estar ciente e concorda que nome, telefone e faturamento da empresa podem ser compartilhados com
+          outros organizadores e usuários cadastrados no Linkime, exclusivamente para fins de networking e operações de leads.
+        </Typography>
+
+        <Typography variant="h6" gutterBottom>
+          4. Armazenamento e Segurança
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Seus dados são armazenados em servidores seguros e protegidos por medidas adequadas de segurança da informação.
+        </Typography>
+
+        <Typography variant="h6" gutterBottom>
+          5. Direitos do Usuário
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Você pode solicitar acesso, correção, exclusão de dados ou revogação de consentimento, conforme previsto pela legislação.
+        </Typography>
+
+        <Typography variant="h6" gutterBottom>
+          6. Retenção de Dados
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Os dados serão mantidos enquanto sua conta estiver ativa ou pelo tempo necessário para obrigações legais.
+        </Typography>
+
+        <Typography variant="h6" gutterBottom>
+          7. Cookies
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Podemos utilizar cookies para melhorar navegação e personalizar sua experiência.
+        </Typography>
+
+        <Typography variant="h6" gutterBottom>
+          8. Alterações na Política
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Podemos atualizar esta Política periodicamente. A continuidade do uso da plataforma significa concordância com as alterações.
         </Typography>
       </Box>
     </Container>

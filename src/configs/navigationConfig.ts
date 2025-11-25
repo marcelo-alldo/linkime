@@ -20,7 +20,7 @@ const navigationConfig: FuseNavItemType[] = [
     type: 'item',
     icon: 'material-outline:bar_chart',
     url: 'dashboard',
-    // auth: authRoles.collaborator,
+    auth: authRoles.user,
   },
   {
     id: 'reports',
@@ -29,7 +29,7 @@ const navigationConfig: FuseNavItemType[] = [
     type: 'item',
     icon: 'material-outline:query_stats',
     url: 'reports',
-    auth: authRoles.collaborator,
+    auth: authRoles.user,
   },
   {
     id: 'panels',
@@ -37,7 +37,7 @@ const navigationConfig: FuseNavItemType[] = [
     translate: 'Painéis',
     type: 'collapse',
     icon: 'heroicons-outline:table-cells',
-    auth: authRoles.collaborator,
+    auth: authRoles.user,
     children: [
       {
         id: 'scrumboard',
@@ -96,7 +96,7 @@ const navigationConfig: FuseNavItemType[] = [
     type: 'item',
     icon: 'material-outline:chat',
     url: 'chats',
-    auth: authRoles.collaborator,
+    auth: authRoles.user,
   },
   {
     id: 'message-templates',
@@ -105,7 +105,7 @@ const navigationConfig: FuseNavItemType[] = [
     type: 'item',
     icon: 'heroicons-outline:document-duplicate',
     url: 'message-templates',
-    auth: authRoles.collaborator,
+    auth: authRoles.user,
   },
   {
     id: 'scheduled-messages',
@@ -114,7 +114,7 @@ const navigationConfig: FuseNavItemType[] = [
     type: 'item',
     icon: 'material-outline:schedule',
     url: 'scheduled-messages',
-    auth: authRoles.collaborator,
+    auth: authRoles.user,
   },
   {
     id: 'calendar-events',
@@ -123,7 +123,7 @@ const navigationConfig: FuseNavItemType[] = [
     type: 'item',
     icon: 'heroicons-outline:calendar-days',
     url: 'calendar',
-    auth: authRoles.collaborator,
+    auth: authRoles.user,
   },
   {
     id: 'events',
@@ -132,7 +132,7 @@ const navigationConfig: FuseNavItemType[] = [
     type: 'item',
     icon: 'heroicons-outline:calendar',
     url: 'events',
-    // auth: authRoles.user,
+    auth: authRoles.user,
   },
   {
     id: 'my-events',
@@ -141,7 +141,7 @@ const navigationConfig: FuseNavItemType[] = [
     type: 'item',
     icon: 'heroicons-outline:calendar-days',
     url: 'my-events',
-    // auth: authRoles.collaborator,
+    auth: authRoles.user,
   },
   {
     id: 'divider',
