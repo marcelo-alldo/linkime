@@ -694,8 +694,8 @@ function Preview() {
                   </li>
                 )}
                 <li>
-                  <Paper sx={{ background: 'white', mt: 2, p: 2 }}>
-                    <img src="/assets/images/meta.png" alt="meta" className="inline-block mr-2" width={200} />
+                  <Paper sx={{ background: 'white', mt: 2, p: 1 }}>
+                    <img src="/assets/images/meta.png" alt="meta" className="inline-block mr-2" width={150} />
                   </Paper>
                 </li>
               </ul>
