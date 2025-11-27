@@ -435,8 +435,8 @@ function Preview() {
                   period={period}
                   url="/sign-up"
                   title="Starter"
-                  yearlyPrice={period === 'mês' ? 'R$ 1.164' : 'R$ 77'}
-                  monthlyPrice={period === 'mês' ? 'R$ 97' : 'R$ 924'}
+                  yearlyPrice={period === 'mês' ? 'R$ 2.364' : 'R$ 157'}
+                  monthlyPrice={period === 'mês' ? 'R$ 197' : 'R$ 1.884'}
                   buttonTitle="Comece agora"
                   details={
                     <div className="mt-8 space-y-2">
